@@ -1,0 +1,27 @@
+server:
+  port: 9002
+  shutdown: graceful
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15s
+    threads:
+      max: 50
+      min-spare: 5
+
+spring:
+  application:
+    name: avatar-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:8080/realms/JuniorHub
+  datasource:
+    url: jdbc:postgresql://localhost:5432/juniorhubdb_avatar
+    username: user
+    password: password
+    hikari:
+      connection-timeout: 2000 #ms
+      maximum-pool-size: 5
